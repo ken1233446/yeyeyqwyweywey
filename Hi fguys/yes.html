@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Page - Valentine's Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffe6e6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 50px;
+            color: #ff3366;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 24px;
+            color: #ff3366;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        input[type="password"] {
+            padding: 15px;
+            font-size: 22px;
+            border: 2px solid #ff3366;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 300px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input[type="password"]:focus {
+            border-color: #ff66b3;
+            outline: none;
+        }
+
+        button {
+            padding: 18px 40px;
+            background-color: #ff3366;
+            color: white;
+            font-size: 22px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        button:hover {
+            background-color: #ff66b3;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .container img {
+            width: 180px;
+            border-radius: 12px;
+            margin-left: 30px;
+        }
+
+        .gif-container {
+            margin: 20px 0;
+        }
+
+        .gif-container img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .countdown {
+            background-color: #ff3366;
+            color: #BFCFE7;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 24px;
+            margin-top: 30px;
+            width: 300px;
+            display: none;
+        }
+
+        .countdown p {
+            margin-bottom: 10px;
+        }
+
+        .countdown span {
+            font-weight: bold;
+        }
+
+        .time-bar {
+            width: 80%;
+            height: 10px;
+            background-color: #ff66b3;
+            margin: 20px 0;
+            border-radius: 5px;
+            transition: width 1s;
+        }
+
+        .time-bar-filler {
+            height: 100%;
+            background-color: #ff3366;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .emoji {
+            font-size: 30px;
+            margin-top: 10px;
+        }
+
+        #longTogetherText {
+            color: #FFEDFA;
+        }
+
+        .next-button {
+            padding: 18px 40px;
+            background-color: #ff66b3;
+            color: white;
+            font-size: 22px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover {
+            background-color: #ff99cc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Valentine's Day WAMBYY!!!</h1>
+    <p>What is our endermeant???🤨</p>
+
+    <div class="container">
+        <input type="password" id="password" placeholder="Enter password" />
+        <img src="your-photo.jpg" alt="Photo of Us" />
+    </div>
+
+    <div class="gif-container">
+        <img src="hiwamby!!!!!.gif">
+    </div>
+
+    <button onclick="checkPassword()">Try daw to Unlock😏😏😏</button>
+
+    <div class="countdown" id="countdown">
+        <p id="longTogetherText">This is how long we've been together:</p>
+        <div id="time"></div>
+        <div class="time-bar">
+            <div class="time-bar-filler" id="timeBar"></div>
+        </div>
+        <div class="emoji">💖💫</div>
+        <button class="next-button" id="nextButton" onclick="window.location.href='https://friendly-queijadas-6725ae.netlify.app/'">Next</button>
+    </div>
+
+    <script>
+        const targetDate = new Date("November 1, 2023 00:00:00").getTime();
+        let passwordCorrect = false;
+
+        function checkPassword() {
+            const password = document.getElementById("password").value;
+            if (password === "wammby") {
+                passwordCorrect = true;
+                alert("Password Correct! Happy Valentine's Day! 💖");
+                showCountdown();
+            } else {
+                alert("Incorrect password. Try again!");
+            }
+        }
+
+        function showCountdown() {
+            if (passwordCorrect) {
+                const countdownElement = document.getElementById("countdown");
+                countdownElement.style.display = "block"; // Show countdown section
+
+                setInterval(function() {
+                    const now = new Date().getTime();
+                    const distance = now - targetDate;
+
+                    const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
+                    const months = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+                    const weeks = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24 * 7));
+                    const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    document.getElementById("time").innerHTML = `
+                        <span>${years} years, ${months} months, ${weeks} weeks, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds✨</span>
+                    `;
+
+                    const percentage = (distance / (1000 * 60 * 60 * 24 * 365 * 3)) * 100;  // assuming 3 years total time
+                    document.getElementById("timeBar").style.width = percentage + "%";
+                }, 1000);
+            }
+        }
+    </script>
+
+</body>
+</html>
